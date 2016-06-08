@@ -212,4 +212,14 @@ describe('truncate', function() {
     assert.strictEqual(expect, actual);
   });
 
+  it('should treat escaped html entities as single characters', function() {
+    var input, expect, actual;
+
+    input = 'FIFA Tournaments - Players &amp; Coaches - <b>Mario BALOTELLI</b>';
+    actual = truncate(input, 50, {ellipsis: ''});
+    expect = 'FIFA Tournaments - Players &amp; Coaches - <b>Mario BALOT</b>'
+    assert.strictEqual(expect, actual);
+
+  });
+
 });
